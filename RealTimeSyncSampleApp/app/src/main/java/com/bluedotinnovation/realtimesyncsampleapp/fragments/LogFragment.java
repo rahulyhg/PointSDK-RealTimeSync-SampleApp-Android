@@ -49,9 +49,9 @@ public class LogFragment extends Fragment implements ServiceStatusListener {
     Handler handler;
 
     //Bluedot Credentials
-    private final String BLUEDOT_USERNAME = "adil@bluedotinnovation.com";
-    private final String BLUEDOT_API_KEY = "b2f58bc0-52df-11e6-99f7-06a56cd124c5";
-    private final String BLUEDOT_PACKAGE_NAME = "com.uat3.crowdtestapp";
+    private final String BLUEDOT_USERNAME = "";
+    private final String BLUEDOT_API_KEY = "";
+    private final String BLUEDOT_PACKAGE_NAME = "";
 
     private static final int PERMISSION_REQUEST_CODE = 101;
 
@@ -120,7 +120,7 @@ public class LogFragment extends Fragment implements ServiceStatusListener {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || (checkPermission() && Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)) {
             serviceManager = ServiceManager.getInstance(getContext());
             if (!serviceManager.isBlueDotPointServiceRunning()) {
-                serviceManager.sendAuthenticationRequest(BLUEDOT_PACKAGE_NAME, BLUEDOT_API_KEY, BLUEDOT_USERNAME, this, "https://uat3.bluedotinnovation.com/pointapi-v1/");
+                serviceManager.sendAuthenticationRequest(BLUEDOT_PACKAGE_NAME, BLUEDOT_API_KEY, BLUEDOT_USERNAME, this);
                 FirebaseMessaging.getInstance().subscribeToTopic("/topics/" + BLUEDOT_API_KEY);
             }
         } else  {
